@@ -1,5 +1,10 @@
 # DeepSearcher
 
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/zilliz_universe.svg?style=social&label=Follow%20%40Zilliz)](https://twitter.com/zilliz_universe)
+  <a href="https://discord.gg/mKc3R95yE5"><img height="20" src="https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white" alt="discord"/></a>
+
+
 DeepSearcher combines reasoning LLMs (OpenAI o1, o3-mini, DeepSeek, Grok 3, Claude 3.7 Sonnet, etc.) and Vector Databases (Milvus, Zilliz Cloud etc.) to perform search, evaluation, and reasoning based on private data, providing highly accurate answer and comprehensive report. This project is suitable for enterprise knowledge management, intelligent Q&A systems, and information retrieval scenarios.
 
 ![Architecture](./assets/pic/deep-searcher-arch.png)
@@ -253,31 +258,37 @@ result = query("Write a report about xxx.") # Your question here
 ### Python CLI Mode
 #### Load
 ```shell
-deepsearcher --load "your_local_path_or_url"
+deepsearcher load "your_local_path_or_url"
 # load into a specific collection
-deepsearcher --load "your_local_path_or_url" --collection_name "your_collection_name" --collection_desc "your_collection_description"
+deepsearcher load "your_local_path_or_url" --collection_name "your_collection_name" --collection_desc "your_collection_description"
 ```
 Example loading from local file:
 ```shell
-deepsearcher --load "/path/to/your/local/file.pdf"
+deepsearcher load "/path/to/your/local/file.pdf"
 # or more files at once
-deepsearcher --load "/path/to/your/local/file1.pdf" "/path/to/your/local/file2.md"
+deepsearcher load "/path/to/your/local/file1.pdf" "/path/to/your/local/file2.md"
 ```
 Example loading from url (*Set `FIRECRAWL_API_KEY` in your environment variables, see [FireCrawl](https://docs.firecrawl.dev/introduction) for more details*):
 
 ```shell
-deepsearcher --load "https://www.wikiwand.com/en/articles/DeepSeek"
+deepsearcher load "https://www.wikiwand.com/en/articles/DeepSeek"
 ```
 
 #### Query
 ```shell
-deepsearcher --query "Write a report about xxx."
+deepsearcher query "Write a report about xxx."
 ```
 
 More help information
 ```shell
 deepsearcher --help
 ```
+For more help information about a specific subcommand, you can use `deepsearcher [subcommand] --help`.
+```shell
+deepsearcher load --help
+deepsearcher query --help
+```
+
 ### Deployment
 
 #### Configure modules
