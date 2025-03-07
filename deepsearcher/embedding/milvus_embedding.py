@@ -32,6 +32,9 @@ class MilvusEmbedding(BaseEmbedding):
             "GPTCache/paraphrase-albert-onnx",
         ]:
             self.model = model.DefaultEmbeddingFunction(**kwargs)
+        elif model_name == "bge-m3":
+            from FlagEmbedding import BGEM3FlagModel
+            self.model = BGEM3FlagModel('BAAI/bge-m3')
         else:
             if model_name.startswith("jina-"):
                 self.model = model.dense.JinaEmbeddingFunction(model_name, **kwargs)
@@ -42,9 +45,13 @@ class MilvusEmbedding(BaseEmbedding):
                 raise ValueError(f"Currently unsupported model name: {model_name}")
 
     def embed_query(self, text: str) -> List[float]:
+        if self.model_name == "bge-m3":
+            return self.model.encode([text], return_dense=True, return_sparse=True, return_colbert_vecs=True)
         return self.model.encode_queries([text])[0]
 
     def embed_documents(self, texts: List[str]) -> List[List[float]]:
+        if self.model_name == "bge-m3":
+            return self.model.encode(texts, return_dense=True, return_sparse=True, return_colbert_vecs=True)
         embeddings = self.model.encode_documents(texts)
         if isinstance(embeddings[0], np.ndarray):
             return [embedding.tolist() for embedding in embeddings]
