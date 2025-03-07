@@ -1,8 +1,8 @@
 provide_settings:
   llm:
-    provider: "OpenAI"
-    config:
-      model: "gpt-4o-mini"  # "gpt-o1-mini"
+    # provider: "OpenAI"
+    # config:
+    #   model: "gpt-4o-mini"  # "gpt-o1-mini"
 #      api_key: "sk-xxxx"  # Uncomment to override the `OPENAI_API_KEY` set in the environment variable
 #      base_url: ""
 
@@ -36,23 +36,23 @@ provide_settings:
 ##      azure_endpoint: "xxxx"  # Uncomment to override the `AZURE_OPENAI_ENDPOINT` set in the environment variable
 ##      api_key: "xxxx"  # Uncomment to override the `AZURE_OPENAI_KEY` set in the environment variable
 
-#    provider: "Ollama"
-#    config:
-#      model: "qwen2.5:3b"
-##      base_url: ""
+   provider: "Ollama"
+   config:
+     model: "qwen2.5:7b"
+#      base_url: ""
 
   embedding:
-    provider: "OpenAIEmbedding"
-    config:
-      model: "text-embedding-ada-002"
+    # provider: "OpenAIEmbedding"
+    # config:
+    #   model: "text-embedding-ada-002"
 #      api_key: ""  # Uncomment to override the `OPENAI_API_KEY` set in the environment variable
 #      base_url: "" # Uncomment to override the `OPENAI_BASE_URL` set in the environment variable
 #      dimension: 1536 # Uncomment to customize the embedding dimension 
 
 
-#    provider: "MilvusEmbedding"
-#    config:
-#      model: "default"
+   provider: "MilvusEmbedding"
+   config:
+     model: "default"
 
 #    provider: "VoyageEmbedding"
 #    config:
@@ -85,10 +85,10 @@ provide_settings:
 #    config: {}
 
   web_crawler:
-    provider: "FireCrawlCrawler"
-    config: {}
+    # provider: "FireCrawlCrawler"
+    # config: {}
 
-    # provider: "Crawl4AICrawler"
+    provider: "Crawl4AICrawler"
     # config: # Uncomment to custom browser configuration for Crawl4AI
     #   browser_config:
     #     headless: false
@@ -105,9 +105,9 @@ provide_settings:
     provider: "Milvus"
     config:
       default_collection: "deepsearcher"
-      uri: "./milvus.db"
+      uri: "localhost:19530"
       token: "root:Milvus"
-      db: "default"
+      db: "crawl4agent"
 
   # vector_db:      
   #   provider: "OracleDB"

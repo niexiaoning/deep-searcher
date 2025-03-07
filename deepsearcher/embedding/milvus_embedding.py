@@ -15,6 +15,7 @@ MILVUS_MODEL_DIM_MAP = {
     "default": 768,  # 'GPTCache/paraphrase-albert-onnx',
     # see https://github.com/milvus-io/milvus-model/blob/4974e2d190169618a06359bcda040eaed73c4d0f/src/pymilvus/model/dense/onnx.py#L12
     "jina-embeddings-v3": 1024,  # required jina api key
+    "BAAI/bge-m3": 1024,
 }
 
 
